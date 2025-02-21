@@ -7,7 +7,7 @@
 
 \subsection{Go lang}
 
-design doc: http://docs.google.com/document/d/1TTj4T2JO42uD5ID9e89oa0sLKhJYD0Y_kqxDv3I3XMw/edit?tab=t.0
+% design doc: http://docs.google.com/document/d/1TTj4T2JO42uD5ID9e89oa0sLKhJYD0Y_kqxDv3I3XMw/edit?tab=t.0
 
 \subsection{Глобальная очередь}
 
@@ -18,7 +18,7 @@ design doc: http://docs.google.com/document/d/1TTj4T2JO42uD5ID9e89oa0sLKhJYD0Y_k
 Глобальная очередь представлена двумя частями:
 
 \begin{itemize}
-    \item Synced --- структура требующая синхронизации при доступе. Содержащая два указателя на начало (head) и конец (tail) очереди, флаг обозначающий завершеие работы рантайма (is_closed)
+    \item Synced --- структура требующая синхронизации при доступе. Содержащая два указателя на начало (head) и конец (tail) очереди, флаг обозначающий завершеие работы рантайма (is\_closed)
     \item Shared --- структура не способная использование которой возможно без синхронизации. Она представляет длину очереди (len) и поле пустышка подсказывающее тайпчекеру свойство хранимых в этой коллекции элементов
 \end{itemize}
 
@@ -37,13 +37,11 @@ design doc: http://docs.google.com/document/d/1TTj4T2JO42uD5ID9e89oa0sLKhJYD0Y_k
 На ресурсе ACM Digital library по словам \verb|concurrent|, \verb|queue| и \verb|fifo| за последние десять лет, то есть с 2015 по 2025 были выбраны следующие работы:
 
 \begin{itemize}
-    \item The State-of-the-Art LCRQ Concurrent Queue Algorithm Does NOT Require CAS2\cite{TODO} https://dl.acm.org/doi/10.1145/3572848.3577485
-    \item A lock-free relaxed concurrent queue for fast work distribution\cite{TODO}
-    https://dl.acm.org/doi/10.1145/3437801.3441583 --- предлагает ограниченного размера (ничего кроме этого из статьи не понятно) включена в следующую работу\cite{TODO}
-    \item A Family of Relaxed Concurrent Queues for Low-Latency Operations and Item Transfers\cite{TODO} https://dl.acm.org/doi/10.1145/3565514 --- bounded, but interesting related works investigation
-    \item Design and Evaluation of Scalable Concurrent Queues for Many-Core Architectures\cite{TODO} https://dl.acm.org/doi/10.1145/2668930.2688048 --- Locked FIFO
+    \item The State-of-the-Art LCRQ Concurrent Queue Algorithm Does NOT Require CAS2~\cite{LCRQNoCAS2}
+    \item A lock-free relaxed concurrent queue for fast work distribution~\cite{FastWorkDistribution} % --- предлагает ограниченного размера (ничего кроме этого из статьи не понятно) включена в следующую работу~\cite{FamilyRelaxedConcurrentQueues}
+    \item A Family of Relaxed Concurrent Queues for Low-Latency Operations and Item Transfers~\cite{FamilyRelaxedConcurrentQueues} % --- % bounded, but interesting related works investigation
+    \item Design and Evaluation of Scalable Concurrent Queues for Many-Core Architectures~\cite{ScalableConcurrentQueuesManyCoreArchitectures}  % --- Locked FIFO
 \end{itemize}
 
 \subsection{Группировака воркеров}
 
-TODO()
