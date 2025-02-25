@@ -61,7 +61,6 @@ url = {https://doi.org/10.1145/3565514},
 doi = {10.1145/3565514},
 abstract = {The producer-consumer communication over shared memory is a critical function of current scalable systems. Queues that provide low latency and high throughput on highly utilized systems can improve the overall performance perceived by the end users. In order to address this demand, we set as priority to achieve both high operation performance and item transfer speed. The Relaxed Concurrent Queues (RCQs) are a family of queues that we have designed and implemented for that purpose. Our key idea is a relaxed ordering model that splits the enqueue and dequeue operations into a stage of sequential assignment to a queue slot and a stage of concurrent execution across the slots. At each slot, we apply no order restrictions among the operations of the same type. We define several variants of the RCQ algorithms with respect to offered concurrency, required hardware instructions, supported operations, occupied memory space, and precondition handling. For specific RCQ algorithms, we provide pseudo-code definitions and reason about their correctness and progress properties. Additionally, we theoretically estimate and experimentally validate the worst-case distance between an RCQ algorithm and a strict first-in-first-out (FIFO) queue. We developed prototype implementations of the RCQ algorithms and experimentally compare them with several representative strict FIFO and relaxed data structures over a range of workload and system settings. The RCQS algorithm is a provably linearizable lock-free member of the RCQ family. We experimentally show that RCQS achieves factors to orders of magnitude advantage over the state-of-the-art strict or relaxed queue algorithms across several latency and throughput statistics of the queue operations and item transfers.},
 journal = {ACM Trans. Parallel Comput.},
-month = dec,
 articleno = {16},
 numpages = {37},
 keywords = {relaxed ordering, array-based queues, linearizable, blocking, lock-free, data structures, Producer-consumer}
@@ -83,4 +82,22 @@ numpages = {12},
 keywords = {accelerator, gpu, heterogeneous, many-core, queue},
 location = {Austin, Texas, USA},
 series = {ICPE '15}
+}
+
+@inproceedings{FastConcurrentQueuesX86 ,
+author = {Morrison, Adam and Afek, Yehuda},
+title = {Fast concurrent queues for x86 processors},
+year = {2013},
+isbn = {9781450319225},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2442516.2442527},
+doi = {10.1145/2442516.2442527},
+abstract = {Conventional wisdom in designing concurrent data structures is to use the most powerful synchronization primitive, namely compare-and-swap (CAS), and to avoid contended hot spots. In building concurrent FIFO queues, this reasoning has led researchers to propose combining-based concurrent queues.This paper takes a different approach, showing how to rely on fetch-and-add (F&A), a less powerful primitive that is available on x86 processors, to construct a nonblocking (lock-free) linearizable concurrent FIFO queue which, despite the F&A being a contended hot spot, outperforms combining-based implementations by 1.5x to 2.5x in all concurrency levels on an x86 server with four multicore processors, in both single-processor and multi-processor executions.},
+booktitle = {Proceedings of the 18th ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming},
+pages = {103–112},
+numpages = {10},
+keywords = {nonblocking algorithm, fetch-and-add, concurrent queue},
+location = {Shenzhen, China},
+series = {PPoPP '13}
 }
