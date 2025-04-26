@@ -95,6 +95,11 @@ fn run() {
 
 А именно, воркер отсчитывает тик, затем пытается найти задачу, после чего пытается украсть задачи у других воркеров. В случае неудачи он паркует поток.
 
+\subsection{Resource drivers}
+
+TODO()
+% When configuring a runtime by hand, no resource drivers are enabled by default. In this case, attempting to use networking types or time types will fail. In order to enable these types, the resource drivers must be enabled. This is done with Builder::enable_io and Builder::enable_time. As a shorthand, Builder::enable_all enables both resource drivers.
+
 \subsection{Бенчмаркинг}
 
 Для измерений производительности была использована библиотека \verb|criterion|\footnote{\href{https://github.com/bheisler/criterion.rs}{Репозиторий} проекта criterion (Дата обращения: 4.1.2025)}. Так как она популярна, имеет обширную документацию и используется в \verb|tokio|.
