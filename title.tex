@@ -20,7 +20,7 @@
     %%   prediploma - отчёт по преддипломной практике;
     %%   master - ВКР магистра;
     %%   bachelor - ВКР бакалавра.
-    type               = {practice},
+    type               = {bachelor},
     %
     %% Здесь указывается вид работы. От вида работы зависят критерии оценивания.
     %%   solution - «Решение». Обучающемуся поручили найти способ решения проблемы в области разработки программного обеспечения или теоретической информатики с учётом набора ограничений.
@@ -55,23 +55,23 @@
     %supervisorPosition = {проф. кафeдры системного программирования, д.ф.-м.н.,}, % Терехов А. Н.
     %supervisorPosition = {ст. преподаватель кафедры ИАС, к.~ф.-м.~н. (если есть),}, % Смирнов К. К.
     supervisorPosition = {доцент кафедры системного программирования, к.ф.-м.н.,},
-    supervisor         = {Гориховский В. И.},
+    supervisor         = {Гориховский~В.~И.},
     %
     %% Актуально только для практик и курсовых. Если консультанта нет или он совпадает с научником, закомментировать или удалить вовсе.
     consultantPosition = {Эксперт по разработке ПО, ООО ``Ядро Центр Программных Разработок'',},
-    consultant         = {Ефремов Р. С.},
+    consultant         = {Ефремов~Р.~С.},
     %
     %% Актуально только для ВКР.
-    % reviewerPosition   = {должность, ООО \enquote{Место работы}, степень (если есть),},
-    % reviewer           = {Рецензент~Р.~Р.},
+    reviewerPosition   = {Старший разработчик ПО, ООО ``Ядро Центр Программных Разработок'',},
+    reviewer           = {Черепонов~А.~П.},
 }
-
+%
 % Английский титульник нужен только для ВКР, остальные виды работ могут его смело игнорировать.
 \filltitle{en}{
     chair              = {Advisor's chair},
     group              = {21.B10-mm},
     title              = {Optimization of injected queue algorithms in Tokio runtime},
-    type               = {practice},
+    type               = {bachelor},
     author             = {Igor Erin},
     %
     %% Possible choices:
@@ -95,11 +95,12 @@
     %%   доцент --- docent (NOT assistant/associate prof.)
     %%   профессор --- prof.
     supervisorPosition = {Sc.D, prof.},
-    supervisor         = {V. I. Gorikhovskii},
+    supervisor         = {V.~I.~Gorikhovskii},
     %
     consultantPosition = {Software Development Expert, OOO "Yadro Centr Programmnykh Razrabotok"},
-    consultant         = {R. S. Efremov},
+    consultant         = {R.~S.~Efremov},
     %
-    % reviewerPosition   = {position at \foreignquote{english}{Company}, degree if present},
-    % reviewer           = {R.R. Reviewer},
+    reviewerPosition   = {Software Senior Developer, OOO "Yadro Centr Programmnykh Razrabotok"},
+    reviewer           = {A.~P.~Cherepanov},
 }
+%
