@@ -145,15 +145,11 @@ fn next_task(&mut self) -> Option<Notified> {
         return next_remote_task()
                 .or_else(|| self.next_local_task())
     }
-    if Some(task) = self.next_local_task()  {
-        return Some(task);
-    }
-    if inject().is_empty() {
-        return None;
+    if task = self.next_local_task() && task.is_some() {
+        return task;
     }
     let (head, tail) = inject().pop_n(self.can_take());
-    self.run_queue.push_back(tail);
-    return head
+    self.run_queue.push_back(tail); return head
 }
     \end{minted}
 
@@ -169,19 +165,17 @@ fn next_task(&mut self) -> Option<Notified> {
 
 \begin{listing}[H]
     \begin{minted}{rust}
-fn run() {
-    loop {
-        core.tick();
-        if let Some(task) = core.next_task() {
-            self.run_task(task, core);
-            continue;
-        }
-        if let Some(task) = core.steal_work() {
-            self.run_task(task, core);
-            continue;
-        }
-        self.park(core)
+loop {
+    self.tick();
+    if let Some(task) = self.next_task() {
+        self.run_task(task);
+        continue;
     }
+    if let Some(task) = self.steal_work() {
+        self.run_task(task);
+        continue;
+    }
+    self.park()
 }
     \end{minted}
 
