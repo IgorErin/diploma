@@ -100,7 +100,6 @@ while !join_handle.is_finished() {}
 
 \subsection{Планировщик многопоточного рантайма tokio}
 
-
 При инстанциации рантайм создает определенное количество системных потоков для так называемого блокирующего пулла, призванного исполнять ресурсоемкие задачи. Всего создается \verb|worker_threads| + \verb|max_blocking_threads| потоков, где
 
 \begin{itemize}
@@ -140,24 +139,35 @@ while !join_handle.is_finished() {}
 
 \begin{listing}[H]
     \begin{minted}{rust}
-fn next_task(&mut self) -> Option<Notified> {
-    if self.tick % self.global_queue_interval == 0 {
-        return next_remote_task()
-                .or_else(|| self.next_local_task())
-    }
-    if task = self.next_local_task() && task.is_some() {
-        return task;
-    }
-    let (head, tail) = inject().pop_n(self.can_take());
-    self.run_queue.push_back(tail); return head
+if worker.tick % worker.global_queue_interval == 0 {
+    return next_remote_task()
+            .or_else(|| worker.next_local_task())
 }
+if let task = worker.next_local_task() && task.is_some() {
+    return task;
+}
+let (head, tail) = inject().pop_n(worker.can_take());
+worker.run_queue.push_back(tail); return head
     \end{minted}
 
     \caption{Логика выбора задачи}
     \label{listing:next_task}
 \end{listing}
 
-И осуществляется в следующем порядке: раз в определенное, конфигурируемое рантаймом, число тиков --- мера времени воркера, он пытается взять задачу из глобальной очереди, иначе --- из локальной, в остальное время проверке подлежит локальная, после --- глобальная очереди.
+И осуществляется в следующем порядке:
+
+\begin{itemize}
+    \item раз в определенное, конфигурируемое рантаймом, число тиков --- мера времени воркера, он пытается взять задачу
+    \begin{itemize}
+        \item Из глобальной очереди.
+        \item Или из локальной, если InjectQueue оказалась пуста.
+    \end{itemize}
+    \item В остальное время проверке подлежит
+    \begin{itemize}
+        \item Локальная очередь.
+        \item Глобальная очередь, если локальная оказалась пуста.
+    \end{itemize}
+\end{itemize}
 
 \subsubsection{Цикл работы воркера}
 
@@ -166,16 +176,17 @@ fn next_task(&mut self) -> Option<Notified> {
 \begin{listing}[H]
     \begin{minted}{rust}
 loop {
-    self.tick();
-    if let Some(task) = self.next_task() {
-        self.run_task(task);
+    worker.tick();
+    if worker.should_wake() { worker.wakers.wake() }
+    if let Some(task) = worker.next_task() {
+        worker.run_task(task);
         continue;
     }
-    if let Some(task) = self.steal_work() {
-        self.run_task(task);
+    if let Some(task) = worker.steal_work() {
+        worker.run_task(task);
         continue;
     }
-    self.park()
+    worker.park()
 }
     \end{minted}
 
@@ -183,8 +194,33 @@ loop {
     \label{listing:worker:run}
 \end{listing}
 
-А именно, воркер отсчитывает тик, затем пытается найти задачу, после чего пытается украсть задачи у других воркеров. В случае неудачи он паркует поток.
+А именно:
 
-\subsection{Бенчмаркинг}
+\begin{itemize}
+    \item Воркер отсчитывает тик.
+    \item Затем пытается найти задачу
+    \item После чего пытается украсть задачи у других воркеров.
+    \item Если задаче не найдена --- паркует поток.
+\end{itemize}
+
+\subsection{Условия экспериментов}
 
 Для измерений производительности была использована библиотека \verb|criterion|\footnote{\href{https://github.com/bheisler/criterion.rs}{Репозиторий} проекта criterion (Дата обращения: 4.1.2025)}. Так как она популярна, имеет обширную документацию и используется в \verb|tokio|.
+
+Здесь и далее эксперименты производились при следующих условиях:
+
+\begin{itemize}
+    \item Исследования проводились на системе YADRO VEGMAN Rx20 G2\footnote{\href{https://yadro.com/ru/vegman/rx20g2/specs}{Описание} системы YADRO VEGMAN Rx20 G2}.
+    \item Бенчмарк был запущен с значением \verb|nice| равным минус двадцати.
+    \item Исполнение было рекомендовано на одной NUMA единице с помощью \verb|taskset|.
+\end{itemize}
+
+Машина для измерение производительности была любезно предоставлена командой \verb|TATLIN.BACKUP| и находилась удаленно, в связи с чем на ней было невозможно отключение сети.
+
+criterion был конфигурирован следующим образом:
+
+\begin{itemize}
+    \item пять секунд прогрева.
+    \item сорок семплов для каждого измерения.
+    \item линеаризация в качестве способа семплирования.
+\end{itemize}
