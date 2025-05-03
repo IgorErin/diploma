@@ -19,7 +19,7 @@
         \makebox[\textwidth]{\includegraphics[scale=0.55]{pictures/tokio_arch.drawio.png}}
     \end{center}
 
-    \caption{Упрощенное представление многопоточного рантайма}
+    \caption{Упрощенное представление многопоточного рантайма.}
     \label{fig:tokio:arch}
 \end{figure}
 
@@ -49,7 +49,7 @@ let closure = async {
 }
     \end{minted}
 
-    \caption{Асинхронное замыкание}
+    \caption{Асинхронное замыкание.}
     \label{listing:async_closure}
 \end{listing}
 
@@ -64,7 +64,7 @@ trait Future {
 }
     \end{minted}
 
-    \caption{Интерфейс асинхронных конечных автоматов в языке Rust}
+    \caption{Интерфейс асинхронных конечных автоматов в языке Rust.}
     \label{listing:future_trait}
 \end{listing}
 
@@ -75,7 +75,7 @@ trait Future {
 enum Poll<T> { Ready(T), Pending }
     \end{minted}
 
-    \caption{Асинхронное замыкание}
+    \caption{Асинхронное замыкание.}
     \label{listing:future:poll}
 \end{listing}
 
@@ -116,7 +116,7 @@ let join_handle = tokio::spawn(async {
 while !join_handle.is_finished() {}
     \end{minted}
 
-    \caption{Ожидание исполнения асинхронного замыкания}
+    \caption{Ожидание исполнения асинхронного замыкания.}
     \label{listing:tokio_spawn::sleep}
 \end{listing}
 
@@ -132,7 +132,7 @@ async {
 }
     \end{minted}
 
-    \caption{Возвращение управления планировщику в tokio}
+    \caption{Возвращение управления планировщику в tokio.}
     \label{listing:tokio_yield_now}
 \end{listing}
 
@@ -191,7 +191,7 @@ loop {
 }
     \end{minted}
 
-    \caption{Логика выбора следующей задачи}
+    \caption{Логика выбора следующей задачи.}
     \label{listing:worker:run}
 \end{listing}
 
