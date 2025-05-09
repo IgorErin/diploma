@@ -7,19 +7,19 @@
         <mxCell id="h471GKbj1zsvHqZ2LlEr-3" value="Производитель" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="130" y="430" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="h471GKbj1zsvHqZ2LlEr-4" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+        <mxCell id="h471GKbj1zsvHqZ2LlEr-4" value="tokio::spawn" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="160" y="429" as="sourcePoint" />
             <mxPoint x="80" y="360" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="h471GKbj1zsvHqZ2LlEr-5" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="h471GKbj1zsvHqZ2LlEr-3">
+        <mxCell id="h471GKbj1zsvHqZ2LlEr-5" value="tokio::spawn" style="endArrow=classic;html=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;horizontal=1;" edge="1" parent="1" source="h471GKbj1zsvHqZ2LlEr-3">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="220" y="419" as="sourcePoint" />
             <mxPoint x="300" y="360" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="h471GKbj1zsvHqZ2LlEr-6" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="h471GKbj1zsvHqZ2LlEr-3">
+        <mxCell id="h471GKbj1zsvHqZ2LlEr-6" value="tokio::spawn" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;horizontal=1;" edge="1" parent="1" source="h471GKbj1zsvHqZ2LlEr-3">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="220" y="409" as="sourcePoint" />
             <mxPoint x="190" y="340" as="targetPoint" />
@@ -37,19 +37,19 @@
         <mxCell id="h471GKbj1zsvHqZ2LlEr-10" value="Производитель" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="600" y="430" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="h471GKbj1zsvHqZ2LlEr-11" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+        <mxCell id="h471GKbj1zsvHqZ2LlEr-11" value="tokio::spawn" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="630" y="429" as="sourcePoint" />
             <mxPoint x="550" y="360" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="h471GKbj1zsvHqZ2LlEr-12" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="h471GKbj1zsvHqZ2LlEr-10">
+        <mxCell id="h471GKbj1zsvHqZ2LlEr-12" value="tokio::spawn" style="endArrow=classic;html=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="h471GKbj1zsvHqZ2LlEr-10">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="690" y="419" as="sourcePoint" />
             <mxPoint x="770" y="360" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="h471GKbj1zsvHqZ2LlEr-13" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="h471GKbj1zsvHqZ2LlEr-10">
+        <mxCell id="h471GKbj1zsvHqZ2LlEr-13" value="tokio::spawn" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="h471GKbj1zsvHqZ2LlEr-10">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="690" y="409" as="sourcePoint" />
             <mxPoint x="660" y="340" as="targetPoint" />
@@ -63,6 +63,21 @@
         </mxCell>
         <mxCell id="h471GKbj1zsvHqZ2LlEr-16" value="Актор" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#76608a;strokeColor=#432D57;fontColor=#ffffff;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="430" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h471GKbj1zsvHqZ2LlEr-17" value="Задача пользователя" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="360" y="585" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="h471GKbj1zsvHqZ2LlEr-18" value="tokio::spawn" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="h471GKbj1zsvHqZ2LlEr-17" target="h471GKbj1zsvHqZ2LlEr-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="550" y="460" as="sourcePoint" />
+            <mxPoint x="600" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="h471GKbj1zsvHqZ2LlEr-19" value="tokio::spawn" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="h471GKbj1zsvHqZ2LlEr-17" target="h471GKbj1zsvHqZ2LlEr-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="550" y="460" as="sourcePoint" />
+            <mxPoint x="600" y="410" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
